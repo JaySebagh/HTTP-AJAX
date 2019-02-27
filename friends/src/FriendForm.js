@@ -12,7 +12,6 @@ function FriendForm(props) {
                     placeholder="Name" 
                     onChange={props.handleChanges}
                 />
-                <div className="baseline" />
 
                 <input 
                     type="number" 
@@ -21,7 +20,6 @@ function FriendForm(props) {
                     placeholder="Age" 
                     onChange={props.handleChanges}
                 />
-                <div className="baseline" />
 
                 <input 
                     type="text" 
@@ -30,7 +28,10 @@ function FriendForm(props) {
                     placeholder="email" 
                     onChange={props.handleChanges}
                 />
-                <div className="baseline" />
+
+                <button type="submit">
+                    Add Friend
+                </button>
             </form>
         </div>
     )

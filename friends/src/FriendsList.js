@@ -16,6 +16,8 @@ class FriendsList extends React.Component {
                 <p>{this.props.individualFriends.name}</p>
                 <p>{this.props.individualFriends.age}</p>
                 <p>{this.props.individualFriends.email}</p>
+                <button onClick={e => this.props.deleteFriend(e, this.props.individualFriends.id)}>Delete Friend</button>
+                {/* <button>Delete Friend</button> */}
             </div>
         )
     }
