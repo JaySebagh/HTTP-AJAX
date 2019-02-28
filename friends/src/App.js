@@ -7,16 +7,18 @@ import FriendForm from './FriendForm';
 
 const baseUrl = 'http://localhost:5000';
 
+const clearedNewFriend = {
+  name: "",
+  age: "",
+  email: ""
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       friends: [],
-      newFriend: {
-        name: "",
-        age: "",
-        email: "",
-      },
+      newFriend: clearedNewFriend,
       isUpdating: false
     };
   }
@@ -73,7 +75,12 @@ class App extends Component {
   updateFriend = () => {
     axios.put(`${baseUrl}/friends/${this.state.newFriend.id}`, this.state.newFriend)
       .then(res => {
-        this.setState({ friends: res.data })
+        this.setState({ 
+          friends: res.data, 
+          isUpdating: false,
+          newFriend: clearedNewFriend
+        })
+        this.props.history.push('/');
       })
       .catch(err => {
         console.log(err);
