@@ -15,7 +15,7 @@ class App extends Component {
       newFriend: {
         name: "",
         age: "",
-        email: ""
+        email: "",
       },
       isUpdating: false
     };
@@ -37,15 +37,15 @@ class App extends Component {
 
   handleChanges = e => {
     this.setState({
-      friend: {
-        ...this.state.friend,
+      newFriend: {
+        ...this.state.newFriend,
         [e.target.name]: e.target.value
       }
     })
   }
 
   addFriend = () => {
-    axios.post(`${baseUrl}/friends`, this.state.friend)
+    axios.post(`${baseUrl}/friends`, this.state.newFriend)
       .then(res => {
         this.setState({ friends: res.data })
       })
@@ -71,9 +71,9 @@ class App extends Component {
   }
 
   updateFriend = () => {
-    axios.put(`${baseUrl}/friends/${this.state.friend.id}`, this.state.friend)
+    axios.put(`${baseUrl}/friends/${this.state.newFriend.id}`, this.state.newFriend)
       .then(res => {
-        console.log(res);
+        this.setState({ friends: res.data })
       })
       .catch(err => {
         console.log(err);
