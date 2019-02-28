@@ -1,10 +1,19 @@
 import React from 'react';
 
 function FriendForm(props) {
-    console.log("the props", props)
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if(props.isUpdating) {
+            props.updateFriend();
+        } else {
+            props.addFriend();
+        }
+    }
+
     return (
         <div>
-            <form onSubmit={props.addFriend}>
+            <form onSubmit={handleSubmit>
                 <input 
                     type="text" 
                     name="name" 
@@ -30,7 +39,7 @@ function FriendForm(props) {
                 />
 
                 <button type="submit">
-                    Add Friend
+                    {props.isUpdating ? "Update Friend" : "Add Friend"}
                 </button>
             </form>
         </div>

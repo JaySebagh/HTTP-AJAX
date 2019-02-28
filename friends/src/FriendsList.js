@@ -1,26 +1,15 @@
 import React from 'react';
 
-class FriendsList extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: "",
-            age: "",
-            email: ""
-        }
-    }
-
-    render () {
+const FriendsList = props => {
         return(
             <div>
-                <p>{this.props.individualFriends.name}</p>
-                <p>{this.props.individualFriends.age}</p>
-                <p>{this.props.individualFriends.email}</p>
-                <button onClick={e => this.props.deleteFriend(e, this.props.individualFriends.id)}>Delete Friend</button>
-                {/* <button>Delete Friend</button> */}
+                <p>{props.individualFriends.name}</p>
+                <p>{props.individualFriends.age}</p>
+                <p>{props.individualFriends.email}</p>
+                <button onClick={e => props.populateForm(e, props.individualFriends.id)}>Edit Friend</button>
+                <button onClick={e => props.deleteFriend(e, props.individualFriends.id)}>Delete Friend</button>
             </div>
         )
-    }
 }
 
 export default FriendsList;
